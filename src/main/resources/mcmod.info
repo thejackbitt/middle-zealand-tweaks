@@ -1,16 +1,16 @@
 [
-{
-  "modid": "examplemod",
-  "name": "Example Mod",
-  "description": "Example placeholder mod.",
-  "version": "${version}",
-  "mcversion": "${mcversion}",
-  "url": "",
-  "updateUrl": "",
-  "authorList": ["ExampleDude"],
-  "credits": "The Forge and FML guys, for making this example",
-  "logoFile": "",
-  "screenshots": [],
-  "dependencies": []
-}
+  {
+    "modid": "mztweaks",
+    "name": "Middle Zealand Tweaks",
+    "description": "A mod that adds in tweaks for the Middle Zealand modpack.",
+    "version": "${version}",
+    "mcversion": "${mcversion}",
+    "url": "",
+    "updateUrl": "",
+    "authorList": ["FrankSilantro"],
+    "credits": "Software Development: FrankSilantro",
+    "logoFile": "",
+    "screenshots": [],
+    "dependencies": []
+  }
 ]
