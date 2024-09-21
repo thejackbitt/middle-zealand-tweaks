@@ -1,0 +1,17 @@
+{
+    "killstreaksound1": {
+        "sounds": ["mztweaks:killstreak1"]
+    },
+    "killstreaksound2": {
+        "sounds": ["mztweaks:killstreak2"]
+    },
+    "killstreaksound3": {
+        "sounds": ["mztweaks:killstreak3"]
+    },
+    "killstreaksound4": {
+        "sounds": ["mztweaks:killstreak4"]
+    },
+    "killstreaksound5": {
+        "sounds": ["mztweaks:killstreak5"]
+    }
+}
