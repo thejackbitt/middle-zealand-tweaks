@@ -39,3 +39,11 @@ item.tauredain_shield.name=Tauredain Shield
 item.umbar_shield.name=Umbar Shield
 item.uruk_shield.name=Uruk Shield
 item.woodelf_shield.name=Wood Elf Shield
+
+# Swords
+item.bardsbane.name=Bardsbane
+item.braveheart.name=Braveheart
+item.crucible.name=DOOM Crucible
+item.mastersword.name=Master Sword
+item.warhammer40k.name=Warhammer 40K
+
