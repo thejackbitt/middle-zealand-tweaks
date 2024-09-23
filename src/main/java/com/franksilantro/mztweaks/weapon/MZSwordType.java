@@ -13,6 +13,8 @@ import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;     
+import net.minecraft.util.ChatComponentText;
+import com.franksilantro.mztweaks.client.overlay.MZOverlay;    
 import net.minecraft.util.ChatComponentText;    
 import java.util.Map;
 import java.util.UUID;
@@ -53,6 +55,8 @@ public class MZSwordType extends LOTRItemSword {
         killstreaks.put(playerID, streak);
 
         // Inform player about their killstreak
+        // player.addChatMessage(new ChatComponentText("Killstreak: " + streak));
+        MZOverlay.triggerKillsteak(streak);
         player.addChatMessage(new ChatComponentText("Killstreak: " + streak));
 
         // Play a random sound

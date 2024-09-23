@@ -3,6 +3,7 @@ package com.franksilantro.mztweaks.events;
 import net.minecraft.entity.player.EntityPlayer;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import com.franksilantro.mztweaks.client.overlay.MZOverlay;
 import com.franksilantro.mztweaks.weapon.MZSwordType;
 
 public class KillstreakEventHandler {

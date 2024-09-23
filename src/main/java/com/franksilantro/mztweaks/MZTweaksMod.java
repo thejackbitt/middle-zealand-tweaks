@@ -5,6 +5,7 @@ import com.franksilantro.mztweaks.shield.MZShieldItems;
 import com.franksilantro.mztweaks.weapon.MZSwordType;
 import com.franksilantro.mztweaks.client.renderer.MZShieldRenderer;
 import com.franksilantro.mztweaks.client.renderer.MZSwordRenderer;
+import com.franksilantro.mztweaks.client.gui.MZGui;
 import com.franksilantro.mztweaks.events.KillstreakEventHandler;
 import lotr.client.render.item.LOTRRenderLargeItem;
 
@@ -188,6 +189,8 @@ public void preInit(FMLPreInitializationEvent event) {
     MinecraftForgeClient.registerItemRenderer(crucible, new MZSwordRenderer());
     MinecraftForgeClient.registerItemRenderer(mastersword, new MZSwordRenderer());
     MinecraftForgeClient.registerItemRenderer(warhammer40k, new MZSwordRenderer());
+
+    MinecraftForge.EVENT_BUS.register(new MZGui(Minecraft.getMinecraft()));
 
     MinecraftForge.EVENT_BUS.register(new KillstreakEventHandler(new MZSwordType()));
 
