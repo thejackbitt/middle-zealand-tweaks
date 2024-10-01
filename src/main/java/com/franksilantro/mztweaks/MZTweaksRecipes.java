@@ -18,4 +18,6 @@ public class MZTweaksRecipes {
             'S', Items.sugar
         );
     }
+
+    
 }
