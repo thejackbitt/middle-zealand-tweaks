@@ -1,5 +1,6 @@
 package com.franksilantro.mztweaks.client.overlay;
 
+import com.franksilantro.mztweaks.client.renderer.MZFontRenderer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.OpenGlHelper;
@@ -25,6 +26,8 @@ public class MZOverlay {
     private static final int frameDuration = 1000 / 12; // 1000 milliseconds divided by 12 FPS
     private static long lastFrameTime = 0;
     private static int framesIndex = 0;
+
+    private static final MZFontRenderer customFontRenderer = new MZFontRenderer(Minecraft.getMinecraft());
 
     public static void triggerKillsteak(int streek) {
         canKillsteak = true;
@@ -75,7 +78,7 @@ public class MZOverlay {
 
         // Render the streak number
         String streakText = "" + streakNum;
-        int textWidth = mc.fontRenderer.getStringWidth(streakText);
+        int textWidth = customFontRenderer.getStringWidth(streakText);
         int textX = (width - textWidth + 375) / 2;
         int textY = (height - 80) / 2;
 
@@ -103,14 +106,19 @@ public class MZOverlay {
         int g = (int) (startG + (endG - startG) * ratio);
         int b = (int) (startB + (endB - startB) * ratio);
 
-        int color = (0x4D << 24) | (r << 16) | (g << 8) | b;
+        int color = (0xFF << 24) | (r << 16) | (g << 8) | b;
+
+        // Calculate alpha value based on the frame index for fading out effect
+        float alpha = 1.0f; // Start with full opacity
+        if (framesIndex >= 16) {
+            alpha = Math.max(0.0f, 1.0f - ((framesIndex - 16) / 6.0f)); // Fade from 1.0 to 0.0 over frames 16-22
+        }
 
         GL11.glPushMatrix();
         GL11.glScalef(fscale, fscale, fscale);
-        mc.fontRenderer.drawString(streakText, textX / fscale, textY / fscale, color, true);
+        customFontRenderer.drawString(streakText, textX / fscale, textY / fscale, color, true, alpha);
         GL11.glPopMatrix();
 
-        // Restore the original OpenGL state
         GL11.glPopAttrib();
         GL11.glPopMatrix();
     }
