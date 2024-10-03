@@ -39,17 +39,17 @@ public class MZOverlay {
 
     public static void renderKillsteak(Minecraft mc) {
         if (!canKillsteak || framesIndex >= frames) {
-            return; // End the animation once all frames have been shown
+            return;
         }
 
         long currentTime = System.currentTimeMillis();
         if (currentTime - lastFrameTime >= frameDuration) {
-            framesIndex++; // Move to the next frame
-            lastFrameTime = currentTime; // Reset the timer for the next frame
+            framesIndex++;
+            lastFrameTime = currentTime;
         }
 
         if (framesIndex >= frames) {
-            canKillsteak = false; // Stop the animation once all frames are displayed
+            canKillsteak = false;
             return;
         }
 
@@ -108,10 +108,9 @@ public class MZOverlay {
 
         int color = (0xFF << 24) | (r << 16) | (g << 8) | b;
 
-        // Calculate alpha value based on the frame index for fading out effect
-        float alpha = 1.0f; // Start with full opacity
+        float alpha = 1.0f; 
         if (framesIndex >= 16) {
-            alpha = Math.max(0.0f, 1.0f - ((framesIndex - 16) / 6.0f)); // Fade from 1.0 to 0.0 over frames 16-22
+            alpha = Math.max(0.0f, 1.0f - ((framesIndex - 16) / 6.0f));
         }
 
         GL11.glPushMatrix();

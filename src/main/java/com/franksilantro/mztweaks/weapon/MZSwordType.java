@@ -43,8 +43,8 @@ public class MZSwordType extends LOTRItemSword {
 
     @SideOnly(Side.CLIENT)
     public void registerIcons(IIconRegister iconRegister) {
-        super.registerIcons(iconRegister);  // Call the parent class's registerIcons method
-        String iconPath = "mztweaks:" + this.getUnlocalizedName().substring(5) + ".big";  // Ensure it uses your mod domain
+        super.registerIcons(iconRegister); 
+        String iconPath = "mztweaks:" + this.getUnlocalizedName().substring(5) + ".big"; 
         this.bigIcon = iconRegister.registerIcon(iconPath);
     }
 
@@ -54,13 +54,13 @@ public class MZSwordType extends LOTRItemSword {
         int streak = killstreaks.getOrDefault(playerID, 0) + 1;
         killstreaks.put(playerID, streak);
 
-        // Inform player about their killstreak
-        // player.addChatMessage(new ChatComponentText("Killstreak: " + streak));
+        // If kill is a multiple of 5 then do this:
+        if (streak % 5 == 0) {
         MZOverlay.triggerKillsteak(streak);
         player.addChatMessage(new ChatComponentText("Killstreak: " + streak));
 
-        // Play a random sound
         playRandomKillstreakSound(player);
+        }
     }
 
     private void playRandomKillstreakSound(EntityPlayer player) {
