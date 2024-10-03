@@ -20,20 +20,18 @@ public class MZFontRenderer {
         GL11.glEnable(GL11.GL_TEXTURE_2D);
         mc.getTextureManager().bindTexture(fontTexture);
 
-        // Clamp alpha between 0.0f and 1.0f
         alpha = Math.max(0.0f, Math.min(1.0f, alpha));
 
         if (shadow) {
-            // Calculate shadow color as a darker version of the original color
             int shadowRed = (int) ((color >> 16 & 0xFF) * 0.44f);
             int shadowGreen = (int) ((color >> 8 & 0xFF) * 0.44f);
             int shadowBlue = (int) ((color & 0xFF) * 0.44f);
             int shadowColor = (0xFF << 24) | (shadowRed << 16) | (shadowGreen << 8) | shadowBlue;
 
-            drawStringInternal(text, x + 1, y + 1, shadowColor, alpha * 0.5f); // Draw shadow with half the alpha value
+            drawStringInternal(text, x + 1, y + 1, shadowColor, alpha * 0.5f); 
         }
 
-        drawStringInternal(text, x, y, color, alpha); // Draw the text with the provided alpha value
+        drawStringInternal(text, x, y, color, alpha); 
 
         GL11.glDisable(GL11.GL_BLEND);
     }
@@ -51,29 +49,28 @@ public class MZFontRenderer {
 
         for (char c : text.toCharArray()) {
             if (c == ' ') {
-                offsetX += 2; // Adjusted space width to 2 pixels
+                offsetX += 2;
                 continue;
             }
 
-            int charIndex = c - 32; // Calculate character index (assuming ASCII starting from 32)
+            int charIndex = c - 32; 
             if (charIndex < 0 || charIndex >= 256) {
-                // Skip non-printable or out-of-range characters
+                
                 continue;
             }
 
-            int texX = (charIndex % 16) * 8; // Column position in the texture
-            int texY = ((charIndex / 16) * 8) + 16; // Correct row position in the texture with a two-row offset down (16 pixels)
+            int texX = (charIndex % 16) * 8;
+            int texY = ((charIndex / 16) * 8) + 16;
 
-            // Set color for each character to maintain the correct color value
             GL11.glColor4f(r, g, b, alpha);
 
             drawChar(x + offsetX, y, texX, texY);
-            offsetX += 6; // Adjusted character spacing to 2 pixels (8px character width + 2px spacing)
+            offsetX += 6; 
         }
     }
 
     private void drawChar(int x, int y, int texX, int texY) {
-        float textureSize = 128.0F; // The size of the texture (128x128 pixels)
+        float textureSize = 128.0F; 
         float u = texX / textureSize;
         float v = texY / textureSize;
         float uMax = (texX + 8) / textureSize;
@@ -94,6 +91,6 @@ public class MZFontRenderer {
     }
 
     public int getStringWidth(String text) {
-        return text.length() * 6; // Updated to reflect new character width (8 pixels wide + 2 pixels spacing)
+        return text.length() * 6;
     }
 }
