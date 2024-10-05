@@ -2,6 +2,7 @@ package com.franksilantro.mztweaks.weapon;
 
 import lotr.common.LOTRCreativeTabs;
 import lotr.common.item.LOTRItemSword;
+import lotr.common.item.LOTRMaterial;
 import net.minecraft.item.Item;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -36,8 +37,22 @@ public class MZSwordType extends LOTRItemSword {
 
     public MZSwordType() {
         super(Item.ToolMaterial.IRON);
-        this.setMaxDamage(1500);
-        this.lotrWeaponDamage = 12.0f; 
+        this.setMaxDamage(1000);
+        this.lotrWeaponDamage = 6.0f;
+        this.setCreativeTab(LOTRCreativeTabs.tabStory);
+    }
+
+    public MZSwordType(LOTRMaterial repairItem, int maxDamage, float weaponDamage) {
+        super(repairItem);
+        this.setMaxDamage(maxDamage);
+        this.lotrWeaponDamage = weaponDamage; 
+        this.setCreativeTab(LOTRCreativeTabs.tabStory); 
+    }
+
+    public MZSwordType(Item.ToolMaterial repairItem, int maxDamage, float weaponDamage) {
+        super(repairItem);
+        this.setMaxDamage(maxDamage);
+        this.lotrWeaponDamage = weaponDamage; 
         this.setCreativeTab(LOTRCreativeTabs.tabStory); 
     }
 
@@ -57,7 +72,7 @@ public class MZSwordType extends LOTRItemSword {
         // If kill is a multiple of 5 then do this:
         if (streak % 5 == 0) {
         MZOverlay.triggerKillsteak(streak);
-        player.addChatMessage(new ChatComponentText("Killstreak: " + streak));
+        // player.addChatMessage(new ChatComponentText("Killstreak: " + streak));
 
         playRandomKillstreakSound(player);
         }

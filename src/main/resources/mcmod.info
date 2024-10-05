@@ -11,6 +11,6 @@
     "credits": "Software Development: FrankSilantro",
     "logoFile": "",
     "screenshots": [],
-    "dependencies": []
+    "dependencies": ["required-after:lotr", "required-after:battlegear2"]
   }
 ]

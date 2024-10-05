@@ -7,8 +7,10 @@ import com.franksilantro.mztweaks.client.renderer.MZShieldRenderer;
 import com.franksilantro.mztweaks.client.renderer.MZSwordRenderer;
 import com.franksilantro.mztweaks.client.gui.MZGui;
 import com.franksilantro.mztweaks.events.KillstreakEventHandler;
+import com.franksilantro.mztweaks.MZTweaksAttackHandler;
 import lotr.client.render.item.LOTRRenderLargeItem;
-
+import lotr.common.LOTRMod;
+import lotr.common.item.LOTRMaterial;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -124,15 +126,15 @@ public void preInit(FMLPreInitializationEvent event) {
     woodelfShield = new MZShieldItems(MZShield.WOODELF).setUnlocalizedName("woodelf_shield");
 
     // Swords!!!!
-    bardsbane = new MZSwordType().setUnlocalizedName("bardsbane").setFull3D().setTextureName("mztweaks:bardsbane");
+    bardsbane = new MZSwordType(LOTRMaterial.GALVORN, 3000, 12.0f).setUnlocalizedName("bardsbane").setFull3D().setTextureName("mztweaks:bardsbane");
     GameRegistry.registerItem(bardsbane, MODID + "_bardsbane");
-    braveheart = new MZSwordType().setUnlocalizedName("braveheart").setFull3D().setTextureName("mztweaks:braveheart");
+    braveheart = new MZSwordType(Item.ToolMaterial.IRON, 1500, 7.5f).setUnlocalizedName("braveheart").setFull3D().setTextureName("mztweaks:braveheart");
     GameRegistry.registerItem(braveheart, MODID + "_braveheart");
-    crucible = new MZSwordType().setUnlocalizedName("crucible").setFull3D().setTextureName("mztweaks:crucible");
+    crucible = new MZSwordType(LOTRMaterial.GALVORN, 7777, 15.0f).setUnlocalizedName("crucible").setFull3D().setTextureName("mztweaks:crucible");
     GameRegistry.registerItem(crucible, MODID + "_crucible");
-    mastersword = new MZSwordType().setUnlocalizedName("mastersword").setFull3D().setTextureName("mztweaks:mastersword");
+    mastersword = new MZSwordType(LOTRMaterial.HIGH_ELVEN, 3000, 10.0f).setUnlocalizedName("mastersword").setFull3D().setTextureName("mztweaks:mastersword");
     GameRegistry.registerItem(mastersword, MODID + "_mastersword");
-    warhammer40k = new MZSwordType().setUnlocalizedName("warhammer40k").setFull3D().setTextureName("mztweaks:warhammer40k");
+    warhammer40k = new MZSwordType(LOTRMaterial.DWARVEN, 1500, 8.0f).setUnlocalizedName("warhammer40k").setFull3D().setTextureName("mztweaks:warhammer40k");
     GameRegistry.registerItem(warhammer40k, MODID + "_warhammer40k");
 
 }
@@ -193,6 +195,8 @@ public void preInit(FMLPreInitializationEvent event) {
     MinecraftForge.EVENT_BUS.register(new MZGui(Minecraft.getMinecraft()));
 
     MinecraftForge.EVENT_BUS.register(new KillstreakEventHandler(new MZSwordType()));
+
+    MinecraftForge.EVENT_BUS.register(new MZTweaksAttackHandler());
 
     SoundHandler soundHandler = Minecraft.getMinecraft().getSoundHandler();
     }
