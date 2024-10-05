@@ -33,15 +33,15 @@ import net.minecraftforge.oredict.ShapelessOreRecipe;
 public class MZTweaksRecipes {
 
     public static void registerRecipes() {
-        // GameRegistry.addRecipe(new ItemStack(MZTweaksMod.edibleTreat), 
-        //    "GE ", 
-        //     "DS ",
-        //     "   ",
-        //     'G', Items.glowstone_dust,
-        //     'E', Items.egg,  
-        //     'D', new ItemStack(Items.dye, 1, 3), 
-        //     'S', Items.sugar
-        // );
+        GameRegistry.addRecipe(new ItemStack(MZTweaksMod.edibleTreat), 
+           "GE ", 
+            "DS ",
+            "   ",
+            'G', Items.glowstone_dust,
+            'E', Items.egg,  
+            'D', new ItemStack(Items.dye, 1, 3), 
+            'S', Items.sugar
+        );
 
         // For reference, here are the Battlegear 2 Shield indices :
         // 0 = Wood
